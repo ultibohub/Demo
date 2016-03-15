@@ -11,8 +11,9 @@ from https://github.com/raspberrypi/firmware onto the SD card as well and use
 the card to boot your Raspberry Pi.
 
 To build the demo download or clone this repository to your local computer, select
-Project, Open Project ... from within the Lazarus (Ultibo Edition) IDE and select
-either UltiboDemoRPi.lpr or UltiboDemoRPi2.lpr from the location you downloaded to. 
+Project, Open Project ... from within the Lazarus (Ultibo Edition) IDE and choose
+UltiboDemoRPi.lpr, UltiboDemoRPi2.lpr or UltiboDemoRPi3.lpr from the location you
+downloaded to. 
 
 Select Run, Build from the menu to build either KERNEL.IMG or KERNEL7.IMG depending
 on which project you opened above.

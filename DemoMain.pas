@@ -1452,6 +1452,7 @@ begin
   BOARD_TYPE_RPIB_PLUS:Result:='Raspberry Pi B+';
   BOARD_TYPE_RPI2B:Result:='Raspberry Pi 2B';
   BOARD_TYPE_RPI_ZERO:Result:='Raspberry Pi Zero';
+  BOARD_TYPE_RPI3B:Result:='Raspberry Pi 3B';
  end;
 end;
 
