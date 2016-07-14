@@ -3,7 +3,8 @@ Ultibo demo project
 This is a self running demonstration of some of the features of Ultibo core.
 
 The demo image can be downloaded from the releases page on GitHub or follow
-the link from the download page on the Ultibo website.
+the link from the download page on the Ultibo website. If you don’t have a
+Raspberry Pi a video of the demo is available on YouTube at https://youtu.be/GF9Xbf3mbf4
 
 To run the demo simply copy the files KERNEL.IMG and KERNEL7.IMG to an SD card
 formatted as FAT, copy the Raspberry Pi firmware files which you can download

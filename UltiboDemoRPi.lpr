@@ -34,7 +34,7 @@ begin
    {When we return start the Console shell}
    CONSOLE_SHELL_ENABLED:=True;
    CONSOLE_SHELL_POSITION:=CONSOLE_POSITION_TOPRIGHT;
-   ConsoleShellDeviceAdd(ConsoleDeviceGetDefault);
+   ConsoleShellDeviceAdd(ConsoleDeviceGetDefault,False);
    
    {And start the Console logging}
    CONSOLE_REGISTER_LOGGING:=True;
