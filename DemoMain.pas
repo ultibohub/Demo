@@ -1596,19 +1596,19 @@ end;
 
 function GetKeyboardKeypressed(Timeout:LongWord):Boolean;
 var
- Character:Word;
+ Ch:Char;
 begin
  {}
  Result:=False;
  
  {Clear Buffer}
- while KeyboardPeek = ERROR_SUCCESS do
+ while ConsolePeekKey(Ch,nil) do
   begin
-   KeyboardGet(Character);
+   ConsoleGetKey(Ch,nil);
   end;
-  
+ 
  {Wait Buffer}
- while KeyboardPeek = ERROR_NO_MORE_ITEMS do
+ while not ConsolePeekKey(Ch,nil) do
   begin
    {Check Timeout}
    if Timeout >= DEMO_KEYPRESS_DELAY then
@@ -1624,9 +1624,9 @@ begin
    {Wait}
    Sleep(DEMO_KEYPRESS_DELAY);
   end;
-  
+ 
  {Get Key}
- KeyboardGet(Character);
+ ConsoleGetKey(Ch,nil);
  
  Result:=True;
 end;
