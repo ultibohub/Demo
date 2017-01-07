@@ -9,12 +9,13 @@ program UltiboDemoRPi3;
 {History: 1.0.0 - Initial release                                              }
 {         1.0.1 - Add Raspberry Pi 3B support                                  }
 {         1.0.2 - Add USB fixes for Raspberry Pi A/A+/Zero                     } 
+{         1.0.3 - Update to use ConsolePeekKey and ConsoleGetKey functions     }
 
 {$mode delphi} {Default to Delphi compatible syntax}
 {$H+}          {Default to AnsiString}
 
 uses
- RaspberryPi2, //RaspberryPi3, //Temporary until release of updated Lazarus/FPC (Also TargetController in UltiboDemoRPi3.lpi)
+ RaspberryPi3,
  GlobalConfig,
  GlobalConst,
  Platform,

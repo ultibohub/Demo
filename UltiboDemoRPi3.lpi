@@ -52,7 +52,7 @@
     <CodeGeneration>
       <SmartLinkUnit Value="True"/>
       <TargetProcessor Value="armv7a"/>
-      <TargetController Value="RPI2B"/>
+      <TargetController Value="RPI3B"/>
       <TargetCPU Value="arm"/>
       <TargetOS Value="ultibo"/>
       <Optimizations>

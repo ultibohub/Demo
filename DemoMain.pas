@@ -34,7 +34,7 @@ uses GlobalConfig,
      Timezone,
      Services,
      Shell,           
-     ShellFileSystem, 
+     ShellFilesystem, 
      ShellUpdate,
      RemoteShell,     
      WebStatus;
