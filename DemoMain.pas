@@ -1453,6 +1453,9 @@ begin
   BOARD_TYPE_RPI2B:Result:='Raspberry Pi 2B';
   BOARD_TYPE_RPI_ZERO:Result:='Raspberry Pi Zero';
   BOARD_TYPE_RPI3B:Result:='Raspberry Pi 3B';
+  BOARD_TYPE_QEMUVPB:Result:='QEMU Versatile PB';
+  BOARD_TYPE_RPI_COMPUTE3:Result:='Raspberry Pi Compute Module 3';
+  BOARD_TYPE_RPI_ZERO_W:Result:='Raspberry Pi Zero W';
  end;
 end;
 
