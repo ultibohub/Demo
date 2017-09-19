@@ -1360,7 +1360,7 @@ begin
      end; 
    end;   
   MESSAGE_ID_ULTIBO:begin
-    Result:='Ultibo.org | Make the future';
+    Result:='Ultibo.org | Make something amazing';
    end;   
   MESSAGE_ID_ULTIBO_ORG:begin
     Result:='https://ultibo.org';
