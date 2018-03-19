@@ -1,6 +1,6 @@
 program UltiboDemoRPi3;
 
-{Ultibo demo project for Raspberry Pi 3B                                       }
+{Ultibo demo project for Raspberry Pi 3B/B+                                    }
 {                                                                              }
 {For the Raspberry Pi A/B/A+/B+/Zero version see the file UltiboDemoRPi.lpr    }
 {                                                                              }
@@ -10,6 +10,7 @@ program UltiboDemoRPi3;
 {         1.0.1 - Add Raspberry Pi 3B support                                  }
 {         1.0.2 - Add USB fixes for Raspberry Pi A/A+/Zero                     } 
 {         1.0.3 - Update to use ConsolePeekKey and ConsoleGetKey functions     }
+{         1.0.4 - Update to add detection of Raspberry Pi 3B+                  }
 
 {$mode delphi} {Default to Delphi compatible syntax}
 {$H+}          {Default to AnsiString}
@@ -36,6 +37,7 @@ begin
    CONSOLE_SHELL_ENABLED:=True;
    CONSOLE_SHELL_POSITION:=CONSOLE_POSITION_TOPRIGHT;
    ConsoleShellDeviceAdd(ConsoleDeviceGetDefault,False);
+   ConsoleWindowActivate(ConsoleWindowFind(ConsoleDeviceGetDefault,CONSOLE_SHELL_POSITION));
    
    {And start the Console logging}
    CONSOLE_REGISTER_LOGGING:=True;
