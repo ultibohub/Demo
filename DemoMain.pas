@@ -1457,6 +1457,7 @@ begin
   BOARD_TYPE_RPI_COMPUTE3:Result:='Raspberry Pi Compute Module 3';
   BOARD_TYPE_RPI_ZERO_W:Result:='Raspberry Pi Zero W';
   BOARD_TYPE_RPI3B_PLUS:Result:='Raspberry Pi 3B+';
+  BOARD_TYPE_RPI3A_PLUS:Result:='Raspberry Pi 3A+';
  end;
 end;
 

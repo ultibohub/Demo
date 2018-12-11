@@ -2,7 +2,7 @@ program UltiboDemoRPi;
 
 {Ultibo demo project for Raspberry Pi (A/B/A+/B+/Zero)                         }
 {                                                                              }
-{For the Raspberry Pi 2B/3B/3B+ version see the file UltiboDemoRPi2.lpr        }
+{For the Raspberry Pi 2B/3B/3B+/3A+ version see the file UltiboDemoRPi2.lpr    }
 {                                                                              }
 {To compile this project select Build, Run from the Lazarus menu               }
 {                                                                              }
@@ -12,6 +12,7 @@ program UltiboDemoRPi;
 {         1.0.3 - Update to use ConsolePeekKey and ConsoleGetKey functions     }
 {         1.0.6 - Update to add detection of Raspberry Pi 3B+                  }
 {         1.0.7 - Update to include LAN78XX driver for Raspberry Pi 3B+        }
+{         1.0.8 - Update to add detection of Raspberry Pi 3A+                  }
 
 {$mode delphi} {Default to Delphi compatible syntax}
 {$H+}          {Default to AnsiString}
