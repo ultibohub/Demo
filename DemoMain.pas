@@ -115,6 +115,14 @@ type
   procedure Execute; override;
  end; 
  
+ TRestartThread = class(TThread)
+  constructor Create;
+ public
+  Keyboards:array[0..15] of PKeyboardDevice;
+  
+  procedure Execute; override;
+ end; 
+ 
 {==============================================================================}
 var
  HTTPListener:THTTPListener;
@@ -275,6 +283,156 @@ end;
 
 {==============================================================================}
 {==============================================================================}
+
+function RestartKeyboardEnumerate(Keyboard:PKeyboardDevice;Data:Pointer):LongWord;
+var
+ Index:Integer;
+ Count:LongWord;
+ Value:LongWord;
+ Thread:TRestartThread;
+begin
+ {}
+ Result:=ERROR_SUCCESS;
+ 
+ {Check Parameters}
+ if Keyboard = nil then Exit;
+ if Data = nil then Exit;
+ 
+ {Get Thread}
+ Thread:=TRestartThread(Data);
+ 
+ {Find a slot for the keyboard}
+ Index:=-1;
+ for Count:=0 to 15 do
+  begin
+   if Thread.Keyboards[Count] = nil then
+    begin
+     Thread.Keyboards[Count]:=Keyboard;
+     Index:=Count;
+     
+     Break;
+    end;
+  end;
+  
+ {Change Keyboard to Local Buffer}
+ if Index <> -1 then
+  begin
+   Value:=0;
+   KeyboardDeviceControl(Keyboard,KEYBOARD_CONTROL_SET_FLAG,KEYBOARD_FLAG_NON_BLOCK or KEYBOARD_FLAG_DIRECT_READ,Value);
+  end;  
+end;
+
+{==============================================================================}
+
+function RestartKeyboardNotification(Device:PDevice;Data:Pointer;Notification:LongWord):LongWord;
+var
+ Index:Integer;
+ Count:LongWord;
+ Value:LongWord;
+ Thread:TRestartThread;
+ Keyboard:PKeyboardDevice;
+begin
+ {}
+ Result:=ERROR_SUCCESS;
+ 
+ {Check Parameters}
+ if Device = nil then Exit;
+ if Data = nil then Exit;
+
+ {Get Thread}
+ Thread:=TRestartThread(Data);
+ 
+ {Get Keyboard}
+ Keyboard:=PKeyboardDevice(Device);
+ 
+ if Notification = DEVICE_NOTIFICATION_ATTACH then
+  begin
+   {Find a slot for the keyboard}
+   Index:=-1;
+   for Count:=0 to 15 do
+    begin
+     if Thread.Keyboards[Count] = nil then
+      begin
+       Thread.Keyboards[Count]:=Keyboard;
+       Index:=Count;
+       
+       Break;
+      end;
+    end;
+    
+   {Change Keyboard to Local Buffer}
+   if Index <> -1 then
+    begin
+     Value:=0;
+     KeyboardDeviceControl(Keyboard,KEYBOARD_CONTROL_SET_FLAG,KEYBOARD_FLAG_NON_BLOCK or KEYBOARD_FLAG_DIRECT_READ,Value);
+    end;  
+  end
+ else if Notification = DEVICE_NOTIFICATION_DETACHING then 
+  begin
+   {Find the slot of this keyboard}
+   for Count:=0 to 15 do
+    begin
+     if Thread.Keyboards[Count] = Keyboard then
+      begin
+       Thread.Keyboards[Count]:=nil;
+       
+       Break;
+      end;
+    end;
+  end;
+end;
+
+{==============================================================================}
+
+constructor TRestartThread.Create;
+begin
+ inherited Create(True,THREAD_STACK_DEFAULT_SIZE); {Create suspended}
+ FreeOnTerminate:=True;
+ Start;
+end;
+
+{==============================================================================}
+
+procedure TRestartThread.Execute;
+var
+ Count:LongWord;
+ Total:LongWord;
+ Data:TKeyboardData;
+begin
+ {Register Notification}
+ KeyboardDeviceNotification(nil,RestartKeyboardNotification,Self,DEVICE_NOTIFICATION_ATTACH or DEVICE_NOTIFICATION_DETACHING,NOTIFIER_FLAG_WORKER);
+ 
+ {Enumerate Keyboards}
+ KeyboardDeviceEnumerate(RestartKeyboardEnumerate,Self);
+ 
+ while not Terminated do
+  begin
+   {Check each Keyboard}
+   for Count:=0 to 15 do
+    begin
+     if Keyboards[Count] <> nil then
+      begin
+       if KeyboardDeviceRead(Keyboards[Count],@Data,SizeOf(TKeyboardData),Total) = ERROR_SUCCESS then
+        begin
+         if Data.KeyCode = KEY_CODE_ESCAPE then
+          begin
+           SystemRestart(500);
+          end
+         else
+          begin
+           KeyboardWrite(@Data,SizeOf(TKeyboardData),Total);
+          end;
+        end;
+      end;
+    end;
+   
+   {Sleep}
+   Sleep(1);
+  end;
+end; 
+
+{==============================================================================}
+{==============================================================================}
      
 function InitDemo:Boolean;
 begin
@@ -287,6 +445,9 @@ begin
  
  {Register Web Status}
  WebStatusRegister(HTTPListener,'','',True);
+ 
+ {Create the Restart Thread}
+ TRestartThread.Create;
  
  Result:=True;
 end;
