@@ -1,10 +1,10 @@
-program UltiboDemoRPi3;
+program UltiboDemoRPi4;
 
-{Ultibo demo project for Raspberry Pi 3B/3B+/3A+                               }
+{Ultibo demo project for Raspberry Pi 4B/400                                   }
 {                                                                              }
 {For the Raspberry Pi A/B/A+/B+/Zero version see the file UltiboDemoRPi.lpr    }
 {For the Raspberry Pi 2B version see the file UltiboDemoRPi2.lpr               }
-{For the Raspberry Pi 4B/400 version see the file UltiboDemoRPi4.lpr           }
+{For the Raspberry Pi 3B/3B+/3A+ version see the file UltiboDemoRPi3.lpr       }
 {                                                                              }
 {To compile this project select Build, Run from the Lazarus menu               }
 {                                                                              }
@@ -21,7 +21,7 @@ program UltiboDemoRPi3;
 {$H+}          {Default to AnsiString}
 
 uses
- RaspberryPi3,
+ RaspberryPi4,
  GlobalConfig,
  GlobalConst,
  Platform,
@@ -50,6 +50,14 @@ begin
    LoggingConsoleDeviceAdd(ConsoleDeviceGetDefault);
    LoggingDeviceSetDefault(LoggingDeviceFindByType(LOGGING_TYPE_CONSOLE));
    LoggingOutput('This is a log window, try connecting a USB device');
+   LoggingOutput('');
+   LoggingOutput('Important Note:');
+   LoggingOutput(' This is a Raspberry Pi 4 so USB');
+   LoggingOutput(' support is only currently active');
+   LoggingOutput(' if you power the Pi via the 40 pin');
+   LoggingOutput(' header and connect USB devices to');
+   LoggingOutput(' the USB-C connector.');
+   LoggingOutput('');
   end;
   
  {Halt the Main thread if it ever returns here}

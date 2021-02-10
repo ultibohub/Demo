@@ -36,6 +36,7 @@ uses GlobalConfig,
      Shell,           
      ShellFilesystem, 
      ShellUpdate,
+     ShellUSB,
      RemoteShell,     
      WebStatus;
 
@@ -1619,6 +1620,10 @@ begin
   BOARD_TYPE_RPI_ZERO_W:Result:='Raspberry Pi Zero W';
   BOARD_TYPE_RPI3B_PLUS:Result:='Raspberry Pi 3B+';
   BOARD_TYPE_RPI3A_PLUS:Result:='Raspberry Pi 3A+';
+  BOARD_TYPE_RPI_COMPUTE3_PLUS:Result:='Raspberry Pi Compute Module 3+';
+  BOARD_TYPE_RPI4B:Result:='Raspberry Pi 4B';
+  BOARD_TYPE_RPI400:Result:='Raspberry Pi 400';
+  BOARD_TYPE_RPI_COMPUTE4:Result:='Raspberry Pi Compute Module 4';
  end;
 end;
 
@@ -1626,7 +1631,7 @@ end;
 
 function GetBoardTotalMemory:String;
 var
- MemorySize:LongWord;
+ MemorySize:UInt64;
 begin
  {}
  Result:='';
