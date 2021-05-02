@@ -50,14 +50,21 @@ begin
    LoggingConsoleDeviceAdd(ConsoleDeviceGetDefault);
    LoggingDeviceSetDefault(LoggingDeviceFindByType(LOGGING_TYPE_CONSOLE));
    LoggingOutput('This is a log window, try connecting a USB device');
-   LoggingOutput('');
-   LoggingOutput('Important Note:');
-   LoggingOutput(' This is a Raspberry Pi 4 so USB');
-   LoggingOutput(' support is only currently active');
-   LoggingOutput(' if you power the Pi via the 40 pin');
-   LoggingOutput(' header and connect USB devices to');
-   LoggingOutput(' the USB-C connector.');
-   LoggingOutput('');
+   case BoardGetType of
+    BOARD_TYPE_RPI4B,BOARD_TYPE_RPI400:begin
+      LoggingOutput('');
+      LoggingOutput('Important Note:');
+      LoggingOutput(' This is a Raspberry Pi 4 so USB');
+      LoggingOutput(' support is only currently active');
+      LoggingOutput(' if you power the Pi via the 40 pin');
+      LoggingOutput(' header and connect USB devices to');
+      LoggingOutput(' the USB-C connector.');
+      LoggingOutput('');
+     end;
+    BOARD_TYPE_RPI_COMPUTE4:begin
+      {Nothing, CM4 USB is supported via the DWCOTG host controller}
+     end;
+   end;  
   end;
   
  {Halt the Main thread if it ever returns here}
