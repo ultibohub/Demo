@@ -8,14 +8,15 @@ program UltiboDemoRPi3;
 {                                                                              }
 {To compile this project select Build, Run from the Lazarus menu               }
 {                                                                              }
-{History: 1.0.0 - Initial release                                              }
-{         1.0.1 - Add Raspberry Pi 3B support                                  }
-{         1.0.2 - Add USB fixes for Raspberry Pi A/A+/Zero                     } 
-{         1.0.3 - Update to use ConsolePeekKey and ConsoleGetKey functions     }
-{         1.0.6 - Update to add detection of Raspberry Pi 3B+                  }
-{         1.0.7 - Update to include LAN78XX driver for Raspberry Pi 3B+        }
-{         1.0.8 - Update to add detection of Raspberry Pi 3A+                  }
-{         1.0.9 - Add Raspberry Pi 4B/400 support                              }
+{History: 1.0.0  - Initial release                                             }
+{         1.0.1  - Add Raspberry Pi 3B support                                 }
+{         1.0.2  - Add USB fixes for Raspberry Pi A/A+/Zero                    } 
+{         1.0.3  - Update to use ConsolePeekKey and ConsoleGetKey functions    }
+{         1.0.6  - Update to add detection of Raspberry Pi 3B+                 }
+{         1.0.7  - Update to include LAN78XX driver for Raspberry Pi 3B+       }
+{         1.0.8  - Update to add detection of Raspberry Pi 3A+                 }
+{         1.0.9  - Add Raspberry Pi 4B/400 support                             }
+{         1.0.10 - Update to include eMMC support for Compute Module           }
 
 {$mode delphi} {Default to Delphi compatible syntax}
 {$H+}          {Default to AnsiString}
