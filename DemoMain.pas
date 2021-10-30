@@ -1624,6 +1624,7 @@ begin
   BOARD_TYPE_RPI4B:Result:='Raspberry Pi 4B';
   BOARD_TYPE_RPI400:Result:='Raspberry Pi 400';
   BOARD_TYPE_RPI_COMPUTE4:Result:='Raspberry Pi Compute Module 4';
+  BOARD_TYPE_RPI_ZERO2_W::Result:='Raspberry Pi Model Zero 2 W';
  end;
 end;
 

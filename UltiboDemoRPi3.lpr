@@ -1,6 +1,6 @@
 program UltiboDemoRPi3;
 
-{Ultibo demo project for Raspberry Pi 3B/3B+/3A+                               }
+{Ultibo demo project for Raspberry Pi 3B/3B+/3A+/Zero2W                        }
 {                                                                              }
 {For the Raspberry Pi A/B/A+/B+/Zero version see the file UltiboDemoRPi.lpr    }
 {For the Raspberry Pi 2B version see the file UltiboDemoRPi2.lpr               }
@@ -17,6 +17,7 @@ program UltiboDemoRPi3;
 {         1.0.8  - Update to add detection of Raspberry Pi 3A+                 }
 {         1.0.9  - Add Raspberry Pi 4B/400 support                             }
 {         1.0.10 - Update to include eMMC support for Compute Module           }
+{         1.0.11 - Add Raspberry Pi Zero 2 W support                           }
 
 {$mode delphi} {Default to Delphi compatible syntax}
 {$H+}          {Default to AnsiString}
