@@ -18,6 +18,7 @@ program UltiboDemoRPi3;
 {         1.0.9  - Add Raspberry Pi 4B/400 support                             }
 {         1.0.10 - Update to include eMMC support for Compute Module           }
 {         1.0.11 - Add Raspberry Pi Zero 2 W support                           }
+{         1.0.12 - Update to FreePascal 3.2.2                                  }
 
 {$mode delphi} {Default to Delphi compatible syntax}
 {$H+}          {Default to AnsiString}
