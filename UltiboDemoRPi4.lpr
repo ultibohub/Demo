@@ -19,6 +19,7 @@ program UltiboDemoRPi4;
 {         1.0.10 - Update to include eMMC support for Compute Module           }
 {         1.0.11 - Add Raspberry Pi Zero 2 W support                           }
 {         1.0.12 - Update to FreePascal 3.2.2                                  }
+{         1.0.13 - Update to include USBCDCEthernet driver for QEMU            }
 
 {$mode delphi} {Default to Delphi compatible syntax}
 {$H+}          {Default to AnsiString}
@@ -32,7 +33,8 @@ uses
  DemoMain,
  Logging,
  Console,
- ConsoleShell;
+ ConsoleShell,
+ USBCDCEthernet;
  
 begin
  {Initialize the Demo}
