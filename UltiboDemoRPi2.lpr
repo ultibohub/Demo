@@ -21,6 +21,7 @@ program UltiboDemoRPi2;
 {         1.0.12 - Update to FreePascal 3.2.2                                  }
 {         1.0.13 - Update to include USBCDCEthernet driver for QEMU            }
 {         1.0.14 - Update to include ShellNetwork unit                         }
+{         1.0.15 - Update to include HIDTouch and HIDJoystick units            }
 
 {$mode delphi} {Default to Delphi compatible syntax}
 {$H+}          {Default to AnsiString}
